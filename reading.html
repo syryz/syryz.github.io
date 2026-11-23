@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your name — An open book</title>
+    <meta name="description" content="A student who likes to read. A little about me, and a few things from my bookshelf.">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#edf0f4">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/fonts/hack/hack-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="reading.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#about">Skip to content</a>
+    <div class="desk">
+      <header class="site-header">
+        <a class="site-name" href="./">Your name</a>
+        <nav aria-label="In this book">
+          <a href="#about">About</a>
+          <a href="#reading">Reading</a>
+        </nav>
+      </header>
+
+      <main class="book" aria-label="An open book about me">
+        <section class="page about-page" id="about" aria-labelledby="about-title">
+          <div class="running-head"><span>Your name</span><span>A little about me</span></div>
+          <div class="about-content">
+            <!-- Replace the bracketed details with your own. -->
+            <p class="eyebrow">Student &amp; reader</p>
+            <h1 id="about-title">Hi, I'm<br>[name].</h1>
+            <p class="introduction">I'm a [your subject] student who likes getting lost in a good book.</p>
+            <p class="introduction">This is a little space for what I'm learning and what's on my mind.</p>
+            <dl class="personal-details">
+              <div><dt>Currently learning</dt><dd>[Something you're curious about]</dd></div>
+              <div><dt>Beyond the books</dt><dd>[A couple of your other interests]</dd></div>
+            </dl>
+          </div>
+          <footer class="page-footer">
+            <!-- Replace the example email before publishing. -->
+            <a href="mailto:you@example.com">Email</a>
+            <a href="https://github.com/syryz">GitHub</a>
+          </footer>
+        </section>
+
+        <section class="page reading-page" id="reading" aria-labelledby="reading-title">
+          <span class="ribbon" aria-hidden="true"></span>
+          <div class="running-head"><span>On my shelf</span></div>
+          <div class="reading-content">
+            <p class="eyebrow">Reading now</p>
+            <h2 id="reading-title">On my nightstand.</h2>
+            <!-- All book titles, authors, and notes below are placeholders. -->
+            <article class="current-book" aria-labelledby="current-title">
+              <div class="book-cover" aria-hidden="true">
+                <span class="cover-label">Reading</span>
+                <span class="cover-title">[Book<br>title]</span>
+                <span class="cover-author">[Author]</span>
+              </div>
+              <div class="book-details">
+                <h3 id="current-title">[Book title]</h3>
+                <p class="author">by [Author]</p>
+                <p class="book-note">[A thought about your current read, or why you picked it up.]</p>
+              </div>
+            </article>
+
+            <div class="shelf">
+              <article class="shelf-entry" aria-labelledby="favorite-title">
+                <span class="shelf-label">A favorite</span>
+                <h3 id="favorite-title">[A book you loved]</h3>
+                <p class="author">[Author]</p>
+                <p class="book-note">[What stayed with you.]</p>
+              </article>
+              <article class="shelf-entry" aria-labelledby="next-title">
+                <span class="shelf-label">Up next</span>
+                <h3 id="next-title">[Something on your list]</h3>
+                <p class="author">[Author]</p>
+              </article>
+            </div>
+          </div>
+          <footer class="page-footer reading-footer">
+            <span>Read anything good lately?</span>
+            <a href="mailto:you@example.com">Tell me about it</a>
+          </footer>
+        </section>
+      </main>
+      <footer class="desk-footer">© Your name</footer>
+    </div>
+  </body>
+</html>
