@@ -23,18 +23,24 @@ Edit the name, title, and description in `index.html`. Styles are in `styles.css
 The wave controls are together inside the shader in `script.js`:
 
 ```glsl
-const float waveSpeed = 1.0;
-const float waveWarp = 1.1;
-const float waveHeight = 0.38;
+const float waveSpeed = 2.0;
+const float waveWarp = 1.35;
+const float waveHeight = 0.44;
+const float waveVariance = 0.8;
+const float blendHeight = 0.24;
+const float layerBlend = 0.55;
 ```
 
 - `waveSpeed`: speed of the wave deformation. `0.5` is half speed, `2.0` is double, and `0.0` freezes the wave shapes while the palette can still drift.
-- `waveWarp`: how much the waves bend and change shape.
-- `waveHeight`: the size of their rises and dips.
+- `waveWarp`: how much the rounded layers bend and change shape.
+- `waveHeight`: the height of their rounded swells. Three overlapping layers drift independently, with a soft glow joining them at the bottom.
+- `waveVariance`: how much each layer's height and lateral opacity vary. `0.0` gives continuous coverage; the default `0.8` adds moving pockets of translucency so overlapping waves do not form a uniformly bright strip at the bottom.
+- `blendHeight`: vertical softness of the transition into the background, relative to the gradient canvas height. `0.12` is more defined, `0.24` is the softer default, and `0.35` gives a broader, mistier fade. It also gently extends the fluid glow; the overall gradient stays anchored to the bottom.
+- `layerBlend`: balance between the fluid mesh glow (`0.0`) and rounded stacked waves (`1.0`). The default `0.55` blends both, with softly deforming layer edges.
 
 `color1` through `color4` set the palette using RGB values between 0 and 1. The `elapsed * 0.00036` multiplier in `draw()` sets the overall animation speed, including both the waves and palette drift.
 
-The CSS fallback's colors and duration are custom properties near the top of `styles.css`. RGB percentages correspond to the shader's 0–1 RGB values. Its shapes and pace approximate the shader.
+The CSS fallback's colors, duration, `--gradient-wave-speed`, and `--gradient-blend-height` are custom properties near the top of `styles.css`. Match `--gradient-wave-speed` to the shader's `waveSpeed` (currently `2`). Set `--gradient-blend-height` to the same number as the shader's `blendHeight` (currently `0.24`); it controls both the blur and the height of the background fade. RGB percentages correspond to the shader's 0–1 RGB values. Its shapes and pace approximate the shader.
 
 Hack v3.003 comes from [Source Foundry's Hack project](https://github.com/source-foundry/Hack/tree/v3.003). The font license is bundled beside the font files.
 
@@ -51,4 +57,3 @@ Then visit `http://127.0.0.1:8000/`.
 ## Reading design
 
 `reading.html` and `reading.css` preserve the open-book design. The homepage and its styles and script live at the repository root. Fonts and their license are in `assets/fonts/hack/`.
-# syryz.github.io

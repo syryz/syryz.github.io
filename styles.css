@@ -18,6 +18,10 @@
   --gradient-color-4: rgb(40% 73% 88%);
   /* The shader's 0.00036 speed is 3× its original 0.00012 speed. */
   --gradient-duration: 8.333333s;
+  /* Matches waveSpeed in script.js; the fallback follows its relative pace. */
+  --gradient-wave-speed: 2;
+  /* Matches blendHeight in script.js: higher values give a mistier fade. */
+  --gradient-blend-height: 0.24;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -31,17 +35,24 @@ h1 { max-width: 100%; margin: 0; transform: translateY(-6svh); font-size: clamp(
 .gradient-floor.is-ready .gradient-fallback { display: none; }
 .gradient-fallback {
   position: absolute;
+  inset: 0;
+  /* Keep the fade stationary while the colors underneath drift. */
+  --fade-end: clamp(75%, calc(72% + var(--gradient-blend-height) * 100%), 100%);
+  mask-image: linear-gradient(to top, #000 0%, rgb(0 0 0 / 0.65) 35%, rgb(0 0 0 / 0.2) 65%, transparent var(--fade-end));
+  -webkit-mask-image: linear-gradient(to top, #000 0%, rgb(0 0 0 / 0.65) 35%, rgb(0 0 0 / 0.2) 65%, transparent var(--fade-end));
+}
+.gradient-fallback::before {
+  content: "";
+  position: absolute;
   inset: -15%;
   background:
-    radial-gradient(ellipse at 8% 100%, var(--gradient-color-1) 0, transparent 57%),
-    radial-gradient(ellipse at 45% 110%, var(--gradient-color-2) 0, transparent 65%),
-    radial-gradient(ellipse at 77% 100%, var(--gradient-color-3) 0, transparent 58%),
-    radial-gradient(ellipse at 100% 100%, var(--gradient-color-4) 0, transparent 55%);
-  filter: blur(28px);
-  mask-image: linear-gradient(to top, #000, transparent 85%);
-  -webkit-mask-image: linear-gradient(to top, #000, transparent 85%);
+    radial-gradient(ellipse at 8% 80%, var(--gradient-color-1) 0, transparent 45%),
+    radial-gradient(ellipse at 42% 112%, var(--gradient-color-2) 0, transparent 52%),
+    radial-gradient(ellipse at 72% 86%, var(--gradient-color-3) 0, transparent 46%),
+    radial-gradient(ellipse at 108% 108%, var(--gradient-color-4) 0, transparent 42%);
+  filter: blur(calc(16px + var(--gradient-blend-height) * 100px));
   transform-origin: bottom center;
-  animation: fallback-drift var(--gradient-duration) ease-in-out infinite alternate;
+  animation: fallback-drift calc(var(--gradient-duration) / max(var(--gradient-wave-speed), 0.01)) ease-in-out infinite alternate;
 }
 
 @keyframes fallback-drift {
@@ -50,5 +61,5 @@ h1 { max-width: 100%; margin: 0; transform: translateY(-6svh); font-size: clamp(
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gradient-fallback { animation: none; }
+  .gradient-fallback::before { animation: none; }
 }
