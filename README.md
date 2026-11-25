@@ -57,3 +57,18 @@ Then visit `http://127.0.0.1:8000/`.
 ## Reading design
 
 `reading.html` and `reading.css` preserve the open-book design. The homepage and its styles and script live at the repository root. Fonts and their license are in `assets/fonts/hack/`.
+
+## Public-view experiment
+
+Open `test.html` to preview the supplied Directus public-view layout without Vue,
+Pinia, or a build step. `test.css` preserves its three blurred shapes, keyframes,
+and 33/19/27-second animation durations. The art appears beside the 500px content
+panel when space is available; below 500px only the content is shown.
+
+Edit `settings` in `test.js` for project branding, image/video backgrounds,
+foreground artwork, a plain-text public note, or the wider content panel. The
+local `getAppearance()` maps editable colors and speed onto CSS custom properties;
+the original `@/utils/get-appearance` source was not provided. `artSpeed: 0`
+pauses the shapes. The page respects reduced motion and pauses animation/video
+when hidden. Relative asset paths work without a server; Directus file IDs need
+an `assetBaseUrl` ending in `/assets/`. The existing homepage is unchanged.

@@ -1,0 +1,204 @@
+@font-face {
+  font-family: "Hack";
+  src: url("assets/fonts/hack/hack-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  font-family: "Hack", "SFMono-Regular", Consolas, monospace;
+  color: #272b34;
+  background: #fcfcfd;
+  /* Standalone equivalents of the Directus public appearance tokens. */
+  --theme--public--art--background: #fcfcfd;
+  --theme--public--art--primary: #6644ff;
+  --theme--public--art--secondary: #ff99dd;
+  --theme--public--art--speed: 1;
+  --theme--public--background: #fcfcfd;
+  --theme--public--foreground: #272b34;
+  --theme--foreground-subdued: #6b7280;
+  --project-color: #6644ff;
+  -webkit-text-size-adjust: 100%;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+
+.public-view { display: flex; min-height: 100vh; min-height: 100svh; }
+
+.container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 0 0 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+  min-width: 0;
+  max-width: 500px;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 20px;
+  overflow-wrap: anywhere;
+  background: var(--theme--public--background);
+  color: var(--theme--public--foreground);
+  font-size: 15px;
+  line-height: 24px;
+  box-shadow: 0 0 40px rgb(38 50 56 / 0.1);
+  transition: max-width 300ms ease;
+}
+
+.container.wide { max-width: 872px; }
+.content { width: 340px; max-width: 100%; }
+.wide .content { width: 712px; }
+.type-title { margin: 0 0 16px; font-size: 42px; font-weight: 400; line-height: 52px; }
+.content p { margin: 0 0 28px; }
+.home-link { color: inherit; text-underline-offset: 5px; }
+.home-link:focus-visible { outline: 2px solid var(--project-color); outline-offset: 6px; border-radius: 2px; }
+.notice { display: flex; color: var(--theme--foreground-subdued); }
+.title-box { display: flex; align-items: center; min-height: 64px; }
+.title { min-width: 0; margin: 2px 0 0 16px; }
+.title h1 { margin: 0; font-family: inherit; font-size: 18px; font-weight: 700; line-height: 24px; }
+.subtitle { margin: 0; color: var(--theme--foreground-subdued); }
+.logo { display: grid; flex-shrink: 0; place-items: center; width: 56px; height: 56px; border-radius: 6px; background: transparent; }
+.logo img { width: 40px; height: 40px; object-fit: contain; }
+
+/* The three nested shapes preserve the component's separate blur and motion. */
+.art {
+  position: relative;
+  z-index: 1;
+  display: none;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--theme--public--art--background);
+  pointer-events: none;
+}
+
+.background-image,
+.art video { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.foreground { width: 80%; max-width: 400px; max-height: 80svh; object-fit: contain; animation: scale-in 600ms ease; }
+.note-container { position: absolute; right: 20px; bottom: 34px; left: 20px; display: flex; justify-content: center; }
+.note { max-width: 340px; margin: 0; padding: 8px 12px; border-radius: 6px; background: rgb(38 50 56 / 0.2); backdrop-filter: blur(2px); color: #fff; font-size: 15px; line-height: 24px; white-space: pre-line; overflow-wrap: anywhere; }
+
+@keyframes scale-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (min-width: 500px) {
+  .container { padding: 40px 80px; }
+  .art { display: flex; }
+}
+
+.fallback {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+}
+
+.fallback > div,
+.fallback > div > div {
+  position: absolute;
+}
+
+.fallback > div > div {
+  inset: 0;
+  border-radius: 50%;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: center center;
+}
+
+.fallback > div:nth-child(1) {
+  bottom: -25%;
+  left: -25%;
+  width: 50%;
+  height: 50%;
+  filter: blur(100px);
+  z-index: 3;
+}
+
+.fallback > div:nth-child(1) > div {
+  background: var(--theme--public--art--primary);
+  opacity: 0.5;
+  animation-name: floating1;
+  animation-duration: calc(33s / var(--theme--public--art--speed));
+}
+
+.fallback > div:nth-child(2) {
+  bottom: -25%;
+  left: 15%;
+  width: 60%;
+  height: 40%;
+  filter: blur(150px);
+  z-index: 2;
+}
+
+.fallback > div:nth-child(2) > div {
+  background: linear-gradient(107.7deg, var(--theme--public--art--primary) 0%, var(--theme--public--art--secondary) 50%);
+  opacity: 0.7;
+  animation-name: floating2;
+  animation-duration: calc(19s / var(--theme--public--art--speed));
+}
+
+.fallback > div:nth-child(3) {
+  bottom: -20%;
+  left: 75%;
+  width: 40%;
+  height: 20%;
+  filter: blur(50px);
+  z-index: 1;
+}
+
+.fallback > div:nth-child(3) > div {
+  background: var(--theme--public--art--primary);
+  opacity: 0.6;
+  animation-name: floating3;
+  animation-duration: calc(27s / var(--theme--public--art--speed));
+}
+
+@keyframes floating1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1, 1) rotate(0deg); }
+  10% { transform: translate(25%, -20%) scale(1.5, 1) rotate(0deg); }
+  20% { transform: translate(10%, -25%) scale(1, 1.5) rotate(0deg); }
+  30% { transform: translate(0%, -20%) scale(1, 1.5) rotate(-45deg); }
+  40% { transform: translate(10%, -30%) scale(1, 2) rotate(0deg); }
+  50% { transform: translate(15%, -35%) scale(2, 0.5) rotate(45deg); }
+  60% { transform: translate(10%, -30%) scale(1, 2) rotate(90deg); }
+  70% { transform: translate(25%, -10%) scale(1, 1.5) rotate(45deg); }
+  80% { transform: translate(40%, 20%) scale(1.5, 0.5) rotate(-45deg); }
+  90% { transform: translate(15%, -20%) scale(2, 1.5) rotate(0deg); }
+}
+
+@keyframes floating2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1, 1) rotate(0deg); }
+  20% { transform: translate(-10%, -5%) scale(1.5, 1.5) rotate(15deg); }
+  40% { transform: translate(0%, -15%) scale(2, 0.5) rotate(-45deg); }
+  60% { transform: translate(-15%, -10%) scale(1.5, 1) rotate(45deg); }
+  80% { transform: translate(-25%, -5%) scale(2.5, 0.5) rotate(180deg); }
+}
+
+@keyframes floating3 {
+  0%, 100% { transform: translate(0%, 0%) scale(1, 1) rotate(0deg); }
+  25% { transform: translate(-10%, -10%) scale(2, 1) rotate(-15deg); }
+  50% { transform: translate(-20%, -5%) scale(1, 0.5) rotate(45deg); }
+  75% { transform: translate(-15%, -15%) scale(2, 1.5) rotate(180deg); }
+}
+
+html.is-paused .fallback > div > div {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fallback > div > div,
+  .foreground { animation: none; }
+  .container { transition: none; }
+}

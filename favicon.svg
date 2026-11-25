@@ -1,4 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="18" fill="#191b20"/>
-  <text x="32" y="43" fill="#fff" text-anchor="middle" font-family="monospace" font-size="36">s</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="s-grad" gradientUnits="userSpaceOnUse" x1="544" y1="239" x2="454" y2="785">
+      <stop offset="0%" stop-color="#2aade4" />
+      <stop offset="50%" stop-color="#22a2dc" />
+      <stop offset="100%" stop-color="#1b96d2" />
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#s-grad)"
+    d="M 598 240
+       C 618 237, 640 241, 655 252
+       C 669 264, 674 285, 673 311
+       C 672 337, 665 358, 649 375
+       C 633 392, 610 406, 582 420
+       C 565 428, 550 435, 537 440
+       C 537 441, 538 441, 540 442
+       C 560 452, 590 466, 618 483
+       C 646 500, 665 523, 670 551
+       C 674 577, 668 604, 653 626
+       C 637 649, 607 672, 568 699
+       C 528 726, 484 753, 442 775
+       C 424 784, 415 787, 405 785
+       C 393 783, 377 771, 365 757
+       C 353 743, 350 725, 352 705
+       C 354 684, 363 664, 379 649
+       C 398 632, 429 615, 460 600
+       C 473 593, 482 589, 489 586
+       C 490 585, 489 584, 486 583
+       C 465 574, 431 559, 402 542
+       C 375 526, 358 505, 353 479
+       C 349 453, 350 423, 357 397
+       C 365 370, 382 348, 408 330
+       C 439 309, 486 287, 532 266
+       C 562 252, 583 243, 598 240 Z"
+  />
 </svg>

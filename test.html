@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#fcfcfd">
+    <meta name="description" content="A standalone public page with an animated gradient.">
+    <title>syrys — public view</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="test.css">
+    <script src="test.js" defer></script>
+  </head>
+  <body>
+    <div class="public-view">
+      <div class="container">
+        <header class="title-box">
+          <div class="logo">
+            <img id="project-logo" src="favicon.svg" alt="syrys">
+          </div>
+          <div class="title">
+            <h1 id="project-name">syrys</h1>
+            <p id="project-descriptor" class="subtitle">Application</p>
+          </div>
+        </header>
+
+        <!-- Equivalent of the component's default slot. -->
+        <main class="content">
+          <h2 class="type-title">Welcome.</h2>
+          <p>A little space on the internet.</p>
+          <a class="home-link" href="index.html">Visit the homepage <span aria-hidden="true">↗</span></a>
+        </main>
+
+        <!-- Equivalent of the component's notice slot. -->
+        <footer class="notice"><span>syrys</span></footer>
+      </div>
+
+      <div class="art">
+        <div class="fallback" aria-hidden="true">
+          <div><div></div></div>
+          <div><div></div></div>
+          <div><div></div></div>
+        </div>
+        <img id="background-image" class="background-image" alt="" hidden>
+        <video id="background-video" autoplay muted loop playsinline aria-hidden="true" hidden></video>
+        <img id="foreground" class="foreground" alt="" hidden>
+        <div class="note-container"><p id="public-note" class="note" hidden></p></div>
+      </div>
+    </div>
+  </body>
+</html>
