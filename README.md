@@ -16,6 +16,11 @@ The homepage is `index.html`. Publish the repository root, including:
 
 All asset paths are relative, so the site works at a custom domain or under a GitHub Pages repository path. All fonts and scripts are hosted locally. The gradient uses browser-side WebGL, with an animated CSS fallback when WebGL or JavaScript is unavailable. It respects reduced motion and pauses while the page is hidden.
 
+The homepage follows the system's light or dark appearance automatically, including
+live changes. Dark mode uses a charcoal background, light text, and a softer
+gradient. Browser theme colors match each appearance; no JavaScript is needed to
+select the theme.
+
 ## Customize
 
 Edit the name, title, and description in `index.html`. Styles are in `styles.css`.
