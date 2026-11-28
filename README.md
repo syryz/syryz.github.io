@@ -9,6 +9,8 @@ The homepage is `index.html`. Publish the repository root, including:
 - `index.html`
 - `styles.css`
 - `script.js`
+- `favicon.ico`
+- `favicon.png`
 - `favicon.svg`
 - `.nojekyll`
 - `assets/fonts/hack/hack-regular.woff2`
