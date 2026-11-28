@@ -7,6 +7,8 @@ A static personal homepage for GitHub Pages: a name in Hack and an animated grad
 The homepage is `index.html`. Publish the repository root, including:
 
 - `index.html`
+- `404.html`
+- `404.css`
 - `styles.css`
 - `script.js`
 - `favicon.ico`
@@ -16,7 +18,13 @@ The homepage is `index.html`. Publish the repository root, including:
 - `assets/fonts/hack/hack-regular.woff2`
 - `assets/fonts/hack/LICENSE.md`
 
-All asset paths are relative, so the site works at a custom domain or under a GitHub Pages repository path. All fonts and scripts are hosted locally. The gradient uses browser-side WebGL, with an animated CSS fallback when WebGL or JavaScript is unavailable. It respects reduced motion and pauses while the page is hidden.
+Homepage asset paths are relative, so the homepage works at a custom domain or under a GitHub Pages repository path. All fonts and scripts are hosted locally. The gradient uses browser-side WebGL, with an animated CSS fallback when WebGL or JavaScript is unavailable. It respects reduced motion and pauses while the page is hidden.
+
+GitHub Pages serves `404.html` for missing pages. It shares the homepage's font,
+gradient, and light/dark appearance, with a link back home. Its assets and home
+link use root-relative paths so they also work for nested missing URLs on
+`syrys.dev`. If hosting under a repository subpath, prefix these paths with that
+subpath.
 
 The homepage follows the system's light or dark appearance automatically, including
 live changes. Dark mode uses a charcoal background, light text, and a softer
